@@ -1,5 +1,5 @@
 // ==========================================
-// server.js — Portfolio Backend with Brevo Email
+// server.js — Portfolio Backend with Brevo Email + Google Sheets
 // ==========================================
 const express = require('express');
 const cors = require('cors');
@@ -24,10 +24,13 @@ app.use(express.json());
 // ==========================================
 // ENVIRONMENT VARIABLES
 // ==========================================
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
-const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL;
-const MY_EMAIL = process.env.MY_EMAIL;
-const BREVO_API_KEY = process.env.BREVO_API_KEY;
+const {
+  ADMIN_PASSWORD,
+  GOOGLE_SCRIPT_URL,
+  MY_EMAIL,
+  BREVO_API_KEY,
+  PORT,
+} = process.env;
 
 // ==========================================
 // EMAIL TRANSPORTER (Using Brevo API)
@@ -63,12 +66,11 @@ app.get('/api/health', (req, res) => {
 app.post('/api/admin/login', (req, res) => {
   const { password } = req.body;
 
-  if (!password) {
+  if (!password)
     return res.status(400).json({
       success: false,
       message: 'Password is required',
     });
-  }
 
   if (password === ADMIN_PASSWORD) {
     const token = Buffer.from(`${Date.now()}-${Math.random()}`).toString('base64');
@@ -85,17 +87,18 @@ app.post('/api/admin/login', (req, res) => {
   });
 });
 
-// Submit contact form (Save to Google Sheets + Send email)
+// ==========================================
+// CONTACT FORM: Save to Google Sheet + Send Email
+// ==========================================
 app.post('/api/contact', async (req, res) => {
   try {
     const { name, email, message } = req.body;
 
-    if (!name || !email || !message) {
+    if (!name || !email || !message)
       return res.status(400).json({
         success: false,
         message: 'All fields are required',
       });
-    }
 
     // Save to Google Sheets
     const formData = new URLSearchParams();
@@ -110,12 +113,12 @@ app.post('/api/contact', async (req, res) => {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     });
 
-    // Send email using Brevo API
+    // Send email via Brevo
     const mailOptions = {
       from: MY_EMAIL,
       to: MY_EMAIL,
-      subject: `New message from ${name}`,
-      text: `📩 You got a new message from your portfolio site.\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`,
+      subject: `📬 New Message from ${name}`,
+      text: `You received a new message from your portfolio:\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`,
     };
 
     await transporter.sendMail(mailOptions);
@@ -128,12 +131,14 @@ app.post('/api/contact', async (req, res) => {
     console.error('❌ Contact form error:', error);
     res.status(500).json({
       success: false,
-      message: 'Failed to send message. Please try again.',
+      message: 'Failed to send message. Please try again later.',
     });
   }
 });
 
-// Fetch contacts from Google Sheets
+// ==========================================
+// FETCH CONTACTS FROM GOOGLE SHEETS
+// ==========================================
 app.get('/api/contacts', async (req, res) => {
   try {
     const response = await fetch(GOOGLE_SCRIPT_URL);
@@ -155,10 +160,10 @@ app.get('/api/contacts', async (req, res) => {
 // ==========================================
 // START SERVER
 // ==========================================
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
-  console.log(`🔒 Admin password configured: ${ADMIN_PASSWORD ? 'Yes' : 'No'}`);
-  console.log(`📧 Brevo API configured: ${BREVO_API_KEY ? 'Yes' : 'No'}`);
-  console.log(`📊 Google Sheets configured: ${GOOGLE_SCRIPT_URL ? 'Yes' : 'No'}`);
+const serverPort = PORT || 5000;
+app.listen(serverPort, () => {
+  console.log(`✅ Server running on port ${serverPort}`);
+  console.log(`🔒 Admin password set: ${ADMIN_PASSWORD ? '✅ Yes' : '❌ No'}`);
+  console.log(`📧 Brevo API key set: ${BREVO_API_KEY ? '✅ Yes' : '❌ No'}`);
+  console.log(`📊 Google Script URL set: ${GOOGLE_SCRIPT_URL ? '✅ Yes' : '❌ No'}`);
 });

@@ -18,7 +18,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
     "express": "^4.21.2",
-    "nodemailer": "^7.0.10"
+    "nodemailer": "^7.0.10",
+    "nodemailer-brevo-transport": "^2.2.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
