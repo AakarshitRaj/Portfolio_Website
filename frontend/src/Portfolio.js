@@ -289,17 +289,22 @@ function Portfolio() {
           </div>
         </div>
       </section>
+      
 {/* Achievements Section */}
 <section id="achievements" className="section bg-dark">
   <div className="container">
-    <h2 className="section-title">Achievements & Certifications</h2>
-    <ul className="achievement-list">
+    <h2 className="section-title gradient-text">🏆 Achievements & Certifications</h2>
+    <div className="achievements-grid">
       {DATA.achievements.map((a, i) => (
-        <li key={i}>{a}</li>
+        <div key={i} className="achievement-card">
+          <span className="trophy">🏅</span>
+          <p>{a}</p>
+        </div>
       ))}
-    </ul>
+    </div>
   </div>
 </section>
+
 
       {/* Contact Section */}
       <section id="contact" className="section">
