@@ -14,9 +14,10 @@ const DATA = {
     title: "Full Stack Developer",
     subtitle: "MERN Stack Specialist",
     about: [
-      "I'm a passionate Full Stack Developer with expertise in building scalable web applications. With a strong foundation in the MERN stack, I create solutions that solve real-world problems.",
-      "When I'm not coding, you'll find me exploring new technologies, contributing to open source, or sharing knowledge with the developer community."
-    ],
+  "I’m a System Engineer and Full Stack Developer at Tata Consultancy Services (TCS), specializing in building scalable, secure, and high-performance web applications using the MERN stack.",
+  "I’ve deployed enterprise-grade REST APIs on AWS, implemented CI/CD pipelines, and automated workflows to improve operational efficiency.",
+  "I’m passionate about writing clean, maintainable code and continuously improving as a developer."
+],
     email: "your.email@example.com",
     github: "https://github.com/yourusername",
     linkedin: "https://linkedin.com/in/yourusername",
@@ -24,54 +25,72 @@ const DATA = {
     resumeUrl: "/resume.pdf"
   },
   
-  experiences: [
-    {
-      position: "Senior Full Stack Developer",
-      company: "Tech Company Inc",
-      duration: "Jan 2023 - Present",
-      location: "Remote",
-      description: "Leading development of scalable web applications using MERN stack. Mentoring junior developers and implementing best practices."
-    },
-    {
-      position: "Full Stack Developer",
-      company: "Startup XYZ",
-      duration: "Jun 2021 - Dec 2022",
-      location: "New York, NY",
-      description: "Built and maintained multiple client projects. Improved application performance by 40% through optimization."
-    }
-  ],
+experiences: [
+  {
+    position: "System Engineer (Full Stack Developer – MERN)",
+    company: "Tata Consultancy Services (TCS)",
+    duration: "June 2024 – Present",
+    location: "Bhubaneswar, India",
+    description:
+      "Developed and deployed full-stack enterprise web applications for a global banking client using the MERN stack. Built scalable REST APIs on AWS Lambda, integrated with Amazon API Gateway, and implemented CI/CD pipelines using AWS CodePipeline and Docker Enterprise."
+  },
+  {
+    position: "Automation Developer",
+    company: "Tata Consultancy Services (TCS)",
+    duration: "2024 – Present",
+    location: "Bhubaneswar, India",
+    description:
+      "Automated reporting workflows using Excel VBA Macros, reducing manual efforts and improving efficiency across departments."
+  }
+],
   
   projects: [
-    {
-      title: "E-commerce Platform",
-      description: "Full-stack online store with cart, payment integration, and admin dashboard.",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      github: "https://github.com/yourusername/project1",
-      live: "https://demo.com"
-    },
-    {
-      title: "Task Management App",
-      description: "Real-time collaborative task tracker with drag-and-drop functionality.",
-      technologies: ["React", "Firebase", "Material-UI"],
-      github: "https://github.com/yourusername/project2",
-      live: "https://demo.com"
-    }
-  ],
+  {
+    title: "Rent A Vehicle Website",
+    description:
+      "Full-stack vehicle rental platform using ReactJS, Node.js, Express, and MongoDB. Includes secure authentication, booking, and payment flow.",
+    technologies: ["ReactJS", "Node.js", "Express.js", "MongoDB"],
+    github: "https://github.com/AakarshitRaj/Rent-a-vehicle-online/tree/master",
+    live: "https://aakarshit-vehicle-rent.vercel.app"
+  },
+  {
+    title: "Store App",
+    description:
+      "Responsive e-commerce store using React and Redux with dynamic API integration via Axios.",
+    technologies: ["React", "Redux", "Axios", "Node.js"],
+    github: "https://github.com/AakarshitRaj/Store/tree/main/Store",
+    live: "https://aakarshit-store.vercel.app"
+  }
+],
   
   skills: [
-    {
-      category: "Frontend",
-      items: ["React", "JavaScript", "TypeScript", "HTML5", "CSS3", "Tailwind CSS"]
-    },
-    {
-      category: "Backend",
-      items: ["Node.js", "Express", "MongoDB", "PostgreSQL", "REST APIs"]
-    },
-    {
-      category: "Tools",
-      items: ["Git", "Docker", "AWS", "Vercel", "Figma", "Postman"]
-    }
-  ]
+  {
+    category: "Frontend",
+    items: ["ReactJS", "Redux", "JavaScript (ES6+)", "HTML5", "CSS3", "Tailwind CSS"]
+  },
+  {
+    category: "Backend",
+    items: ["Node.js", "Express.js", "MongoDB", "MySQL", "REST APIs"]
+  },
+  {
+    category: "Cloud & DevOps",
+    items: ["AWS (IAM, EC2, S3, Lambda)", "Docker", "CI/CD", "Kubernetes", "Vercel"]
+  },
+  {
+    category: "Tools & Automation",
+    items: ["Git", "GitHub", "Postman", "Excel VBA Macros", "Visual Studio Code"]
+  }
+],
+achievements: [
+  "Xcelerate Warrior Recognition – Tata Consultancy Services (2025)",
+  "On the Spot (Team) Award – Tata Consultancy Services (2025)",
+  "Best Team Award – Tata Consultancy Services (2025)",
+  "Group Representative (GR) Appreciation Certificate – TCS ILP 2024",
+  "Solved 300+ DSA problems on LeetCode and GFG",
+  "AWS Academy Graduate – Introduction to Cloud (AWS)",
+  "LinkedIn Certificate – Building RESTful APIs with Node.js and Express"
+],
+
 };
 
 function Portfolio() {
@@ -136,7 +155,7 @@ function Portfolio() {
           </button>
 
           <ul className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}>
-            {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map(section => (
+            {['home', 'about', 'experience', 'projects', 'skills','achievements', 'contact'].map(section => (
               <li key={section}>
                 <button
                   className={activeSection === section ? 'active' : ''}
@@ -270,6 +289,17 @@ function Portfolio() {
           </div>
         </div>
       </section>
+{/* Achievements Section */}
+<section id="achievements" className="section bg-dark">
+  <div className="container">
+    <h2 className="section-title">Achievements & Certifications</h2>
+    <ul className="achievement-list">
+      {DATA.achievements.map((a, i) => (
+        <li key={i}>{a}</li>
+      ))}
+    </ul>
+  </div>
+</section>
 
       {/* Contact Section */}
       <section id="contact" className="section">
