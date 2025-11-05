@@ -88,11 +88,11 @@ achievements: [
   },
   {
     title: "On the Spot (Team) Award – Tata Consultancy Services (2025)",
-    link: ""
+    link: "/on-the-spot.pdf"
   },
   {
     title: "Best Team Award – Tata Consultancy Services (2025)",
-    link: ""
+    link: "bestTeamAward.pdf"
   },
   {
     title: "Group Representative (GR) – TCS ILP 2024",
