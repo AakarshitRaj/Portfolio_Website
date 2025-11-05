@@ -10,7 +10,7 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 // ========================================
 const DATA = {
   personal: {
-    name: "Aakarshit Rajs",
+    name: "Aakarshit Raj",
     title: "Full Stack Developer",
     subtitle: "MERN Stack Specialist",
     about: [
