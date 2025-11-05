@@ -82,14 +82,40 @@ experiences: [
   }
 ],
 achievements: [
-  "Xcelerate Warrior Recognition – Tata Consultancy Services (2025)",
-  "On the Spot (Team) Award – Tata Consultancy Services (2025)",
-  "Best Team Award – Tata Consultancy Services (2025)",
-  "Group Representative (GR) Appreciation Certificate – TCS ILP 2024",
-  "Solved 300+ DSA problems on LeetCode and GFG",
-  "AWS Academy Graduate – Introduction to Cloud (AWS)",
-  "LinkedIn Certificate – Building RESTful APIs with Node.js and Express"
+  {
+    title: "Xcelerate Warrior Recognition – Tata Consultancy Services (2025)",
+    link: "" // leave blank if no link available
+  },
+  {
+    title: "On the Spot (Team) Award – Tata Consultancy Services (2025)",
+    link: ""
+  },
+  {
+    title: "Best Team Award – Tata Consultancy Services (2025)",
+    link: ""
+  },
+  {
+    title: "Group Representative (GR) – TCS ILP 2024",
+    link: "https://example.com/tcs-gr-certificate"
+  },
+  {
+    title: "AWS Academy Graduate – Introduction to Cloud (AWS)",
+    link: "https://www.credly.com/badges/aws-intro-cloud"
+  },
+  {
+    title: "Building RESTful APIs with Node.js and Express – LinkedIn Learning",
+    link: "https://www.linkedin.com/learning/certificates/your-link"
+  },
+  {
+    title: "MongoDB Developer Certification – Udemy",
+    link: "https://udemy-certificate-link"
+  },
+  {
+    title: "React (Basic) Certificate – HackerRank",
+    link: "https://www.hackerrank.com/certificates/your-link"
+  }
 ],
+
 
 };
 
@@ -289,7 +315,7 @@ function Portfolio() {
           </div>
         </div>
       </section>
-      
+
 {/* Achievements Section */}
 <section id="achievements" className="section bg-dark">
   <div className="container">
@@ -298,12 +324,28 @@ function Portfolio() {
       {DATA.achievements.map((a, i) => (
         <div key={i} className="achievement-card">
           <span className="trophy">🏅</span>
-          <p>{a}</p>
+          <p>
+            {a.title}
+            {a.link && (
+              <>
+                {" "}
+                <a
+                  href={a.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="view-cert-link"
+                >
+                  View Certificate →
+                </a>
+              </>
+            )}
+          </p>
         </div>
       ))}
     </div>
   </div>
 </section>
+
 
 
       {/* Contact Section */}

@@ -545,3 +545,17 @@ body {
     text-align: left;
   }
 }
+.view-cert-link {
+  display: inline-block;
+  margin-left: 0.4rem;
+  font-size: 0.9rem;
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.view-cert-link:hover {
+  color: #7c3aed;
+  transform: translateX(3px);
+}
