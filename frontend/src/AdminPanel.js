@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 import './AdminPanel.css';
 
 // Backend API URL - No secrets here!
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+//const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || '/api';
+
 
 function AdminPanel() {
   const [contacts, setContacts] = useState([]);
